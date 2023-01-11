@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./Weather.css";
 import axios from "axios";
-import WeatherInfo from "./Weatherinfo";
 
 export default function Weather() {
   const [ready, setReady] = useState(false);
@@ -17,9 +16,25 @@ export default function Weather() {
   if (ready) {
     return (
       <div className="Weather">
-        <WeatherInfo.js/>
         <div className="row">
-          
+          <div className="col-3">
+            <img src="" alt="Clear" id="em1" />
+            <h1>{Math.round(weatherData.temperature)}</h1>
+
+            <br />
+            <h2 id="wind">
+              <small>WIND: 2KM</small>
+            </h2>
+          </div>
+          <div className="col-2">
+            <ul className="today">
+              <li id="city">LVIV,UKRAINE</li>
+              <li className="dayhour"></li>
+              <li id="weather-description"></li>
+              <li id="humidity">Humidity:</li>
+            </ul>
+          </div>
+        </div>
         <div id="forecast">
           <ul className="list-group list-group-horizontal horiz" id="forecast">
             <li className="list-group-item">
