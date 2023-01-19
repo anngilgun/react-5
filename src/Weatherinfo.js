@@ -4,7 +4,7 @@ import WeatherIcon from "./WeatherIcon";
 export default function WeatherInfo(props) {
   return (
     <div className="Weatherinfo">
-      <div className="row">
+      <div className="row mt-3">
         <div className="col-6">
           <div className="clearfix">
             <div className="float-left">

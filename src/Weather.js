@@ -7,9 +7,9 @@ export default function Weather(props) {
   const [city, setCity] = useState(props.defaultCity);
   function handleResponse(response) {
     setWeatherData({
+      ready: true,
       temperature: response.data.main.temp,
       humidity: response.data.main.humidity,
-      ready: true,
 
       description: response.data.weather[0].description,
       icon: response.data.weather[0].icon,
@@ -17,19 +17,20 @@ export default function Weather(props) {
       city: response.data.name,
     });
   }
-  function search() {
-    let apiKey = "f5029b784306910c19746e40c14d6cd3";
-    let city = "New York";
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(`${url}`).then(handleResponse);
-  }
+
   function handleSubmit(event) {
     event.preventDefault();
-    search(city);
+    search();
   }
 
   function handleCityChange(event) {
     setCity(event.target.value);
+  }
+  function search() {
+    let apiKey = "f5029b784306910c19746e40c14d6cd3";
+    let city = "New York";
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(url).then(handleResponse);
   }
   if (weatherData.ready) {
     return (
