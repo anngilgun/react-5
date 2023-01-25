@@ -1,6 +1,5 @@
 import React from "react";
 import "./Weather.css";
-import WeatherTemperature from "./WeatherTemperature";
 import WeatherIcon from "./WeatherIcon";
 export default function WeatherInfo(props) {
   return (
@@ -10,7 +9,6 @@ export default function WeatherInfo(props) {
           <div className="clearfix">
             <div className="float-left">
               <WeatherIcon code={props.data.icon} />
-              <WeatherTemperature celsius={props.data.temperature} />
               <h2 id="wind">
                 <small>WIND: {props.data.wind}km/h</small>
               </h2>

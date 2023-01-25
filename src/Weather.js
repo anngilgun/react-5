@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./Weather.css";
 import axios from "axios";
-import WeatherInfo from "./Weatherinfo";
+import WeatherInfo from "./WeatherInfo";
+import WeatherForecast from "./WeatherForecast";
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState(props.defaultCity);
@@ -10,7 +11,7 @@ export default function Weather(props) {
       ready: true,
       temperature: response.data.main.temp,
       humidity: response.data.main.humidity,
-
+      coordinates: response.data.coord,
       description: response.data.weather[0].description,
       icon: response.data.weather[0].icon,
       wind: response.data.wind.speed,
@@ -36,91 +37,7 @@ export default function Weather(props) {
     return (
       <div className="Weather">
         <WeatherInfo data={weatherData} />
-
-        <div id="forecast">
-          <ul className="list-group list-group-horizontal horiz" id="forecast">
-            <li className="list-group-item">
-              <ul>
-                <li className="em2">
-                  <img
-                    src="http://openweathermap.org/img/wn/50d@2x.png"
-                    alt=""
-                    width="42"
-                  />
-                </li>
-                <li className="TEMP">
-                  <span id="max">20°</span>
-                  <span id="min">10°</span>
-                </li>
-                <li className="MON">MON</li>
-              </ul>
-            </li>
-            <li className="list-group-item">
-              <ul>
-                <li className="em2">
-                  <img
-                    src="http://openweathermap.org/img/wn/50d@2x.png"
-                    alt=""
-                    width="42"
-                  />
-                </li>
-                <li className="TEMP">
-                  <span id="max">20°</span>
-                  <span id="min">10°</span>
-                </li>
-                <li className="MON">TUE</li>
-              </ul>
-            </li>
-            <li className="list-group-item">
-              <ul>
-                <li className="em2">
-                  <img
-                    src="http://openweathermap.org/img/wn/50d@2x.png"
-                    alt=""
-                    width="42"
-                  />
-                </li>
-                <li className="TEMP">
-                  <span id="max">20°</span>
-                  <span id="min">10°</span>
-                </li>
-                <li className="MON">WED</li>
-              </ul>
-            </li>
-            <li className="list-group-item">
-              <ul>
-                <li className="em2">
-                  <img
-                    src="http://openweathermap.org/img/wn/50d@2x.png"
-                    alt=""
-                    width="42"
-                  />
-                </li>
-                <li className="TEMP">
-                  <span id="max">20°</span>
-                  <span id="min">10°</span>
-                </li>
-                <li className="MON">THU</li>
-              </ul>
-            </li>
-            <li className="list-group-item">
-              <ul>
-                <li className="em2">
-                  <img
-                    src="http://openweathermap.org/img/wn/50d@2x.png"
-                    alt=""
-                    width="42"
-                  />
-                </li>
-                <li className="TEMP">
-                  <span id="max">20°</span>
-                  <span id="min">10°</span>
-                </li>
-                <li className="MON">FRI</li>
-              </ul>
-            </li>
-          </ul>
-        </div>
+        <WeatherForecast coordinates={weatherData.coordinates} />
         <form id="form" onSubmit={handleSubmit}>
           <input
             type="text"
