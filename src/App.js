@@ -6,7 +6,7 @@ export default function App() {
   return (
     <div className="App">
       <div className="container">
-        <Weather defaultCity="London" />
+        <Weather />
         <div className="link">
           <a href="https://github.com/anngilgun/weather">Open-source code</a> by
           Anna Pliuiko
